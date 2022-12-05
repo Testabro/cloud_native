@@ -1,11 +1,42 @@
 ## Docker commands used to build the application 
-# TODO: insert the docker build command
+$ docker build -t testabro/techtrends .
 
 ## Docker commands used to run the application
-# TODO: insert the docker run command
+$ docker run --detach -p 7111:3111 testabro/techtrends
 
 ## Docker commands used to get the application logs
-# TODO: insert the docker logs command
+$ docker container list
+
+CONTAINER ID   IMAGE                 COMMAND           CREATED         STATUS         PORTS                    NAMES
+33b48bf1793b   testabro/techtrends   "python app.py"   5 seconds ago   Up 3 seconds   0.0.0.0:7111->3111/tcp   vigilant_murdock
+
+$ docker logs 33b48bf1793b
 
 ## Logs from the container running the TechTrends application
-# TODO: paste logs from the Docker container 
+  * Serving Flask app 'app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
+172.17.0.1 - - [05/Dec/2022 04:09:52] "GET /healthz HTTP/1.1" 200 -
+172.17.0.1 - - [05/Dec/2022 04:09:57] "GET /health HTTP/1.1" 404 -
+172.17.0.1 - - [05/Dec/2022 04:10:09] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [05/Dec/2022 04:10:09] "GET /static/css/main.css HTTP/1.1" 304 -
+[2022-12-05 04:10:11,365] INFO in app:  Article "KubeCon + CloudNativeCon 2021" retrieved!
+172.17.0.1 - - [05/Dec/2022 04:10:11] "GET /2 HTTP/1.1" 200 -
+172.17.0.1 - - [05/Dec/2022 04:10:11] "GET /static/css/main.css HTTP/1.1" 304 -
+[2022-12-05 04:10:31,252] ERROR in app:  Article with id "100" does not exist!
+172.17.0.1 - - [05/Dec/2022 04:10:31] "GET /100 HTTP/1.1" 404 -
+172.17.0.1 - - [05/Dec/2022 04:10:31] "GET /static/css/main.css HTTP/1.1" 304 -
+[2022-12-05 04:10:35,250] INFO in app:  About Us page is retrieved!
+172.17.0.1 - - [05/Dec/2022 04:10:35] "GET /about HTTP/1.1" 200 -
+172.17.0.1 - - [05/Dec/2022 04:10:35] "GET /static/css/main.css HTTP/1.1" 304 -
+172.17.0.1 - - [05/Dec/2022 04:10:36] "GET /create HTTP/1.1" 200 -
+172.17.0.1 - - [05/Dec/2022 04:10:36] "GET /static/css/main.css HTTP/1.1" 304 -
+[2022-12-05 04:10:47,380] INFO in app:  Article "post7" created!
+172.17.0.1 - - [05/Dec/2022 04:10:47] "POST /create HTTP/1.1" 302 -
+172.17.0.1 - - [05/Dec/2022 04:10:47] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [05/Dec/2022 04:10:47] "GET /static/css/main.css HTTP/1.1" 304 -
