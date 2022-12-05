@@ -14,7 +14,7 @@ from werkzeug.exceptions import abort
 
 # GLOBAL VARIABLES
 db_connection_count = 0
-
+app = Flask(__name__)
 
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
@@ -127,4 +127,8 @@ def metrics():
 
 # start the application on port 3111
 if __name__ == "__main__":
+    # Logging configuration
+    app.logger.setLevel(logging.INFO)
+    
+    # Start the app
     app.run(host="0.0.0.0", port="3111")
