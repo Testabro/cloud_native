@@ -4,7 +4,7 @@ metadata:
   name: techtrends
   namespace: sandbox
   labels:
-    app: web
+    app: techtrends
 spec:
   selector:
     matchLabels:
@@ -12,6 +12,9 @@ spec:
   replicas: 1
   strategy:
     type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
   template:
     metadata:
       labels:
@@ -20,6 +23,7 @@ spec:
       containers:
         - name: techtrends
           image: 'testabro/techtrends:latest'
+          imagePullPolicy: IfNotPresent
           terminationMessagePolicy: File
           ports:
             - containerPort: 3111
