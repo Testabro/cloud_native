@@ -1,0 +1,8 @@
+apiVersion: v1
+name: techtrends
+description: Techtrend Deployment Manifests
+keywords: 
+- techtrends
+version: 1.0.0
+maintainers:
+- name: testabrook
