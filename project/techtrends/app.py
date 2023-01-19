@@ -1,4 +1,4 @@
-import sqlite3, logging
+import os, sqlite3, logging
 
 from flask import (
     Flask,
@@ -19,12 +19,14 @@ app = Flask(__name__)
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
 def get_db_connection():
-    connection = sqlite3.connect("database.db")
-    connection.row_factory = sqlite3.Row
-    global db_connection_count
-    db_connection_count += 1
-    return connection
-
+    db = "database.db"
+    if os.path.isfile(db):
+        connection = sqlite3.connect(db)
+        connection.row_factory = sqlite3.Row
+        global db_connection_count
+        db_connection_count += 1
+        return connection
+    return None
 
 # Function to get a post using its ID
 def get_post(post_id):
@@ -99,6 +101,23 @@ def create():
 # Define the health functionality
 @app.route("/healthz", methods=["GET"])
 def healthcheck():
+    if get_db_connection() is None:
+        response = app.response_class(
+        response=json.dumps({"reason": "Database connection error", "result": "Error - unhealthy" }),
+        status=500,
+        mimetype="application/json"
+        )
+        return response
+
+    try:
+        post_count()
+    except sqlite3.Error:
+        response = app.response_class(
+        response=json.dumps({ "reason": "Database read error", "result": "Error - unhealthy" }),
+        status=500,
+        mimetype="application/json"
+        )
+        return response
     response = app.response_class(
         response=json.dumps({"result": "OK - healthy"}),
         status=200,
