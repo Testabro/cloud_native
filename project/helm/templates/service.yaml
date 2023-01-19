@@ -8,7 +8,6 @@ metadata:
 spec:
   ports:
   - port: {{ .Values.service.port }}
-    nodePort: {{ .Values.service.nodePort }}
     protocol: TCP
     targetPort: 3111
   selector:
