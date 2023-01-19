@@ -12,6 +12,6 @@ spec:
     helm:
       valueFiles:
       - values-prod.yaml
-    path: project/helm/
+    path: project/helm
     repoURL: https://github.com/Testabro/cloud_native
     targetRevision: HEAD
