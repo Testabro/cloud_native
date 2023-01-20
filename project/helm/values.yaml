@@ -10,7 +10,7 @@ service:
 replicaCount: 1
 
 ports:
-  - containerPort: 3111
+  containerPort: 3111
 
 containers:
   image:
