@@ -10,12 +10,13 @@ service:
 replicaCount: 1
 
 containers:
-  - name: techtrends
-    image:
-      repository: testabro/techtrends
-      tag: latest
-      imagePullPolicy: IfNotPresent
-      terminationMessagePolicy: File
+
+  image:
+    repository: testabro/techtrends
+    tag: latest
+    imagePullPolicy: IfNotPresent
+    terminationMessagePolicy: File
+    
     ports:
       - containerPort: 3111
     
