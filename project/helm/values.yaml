@@ -15,26 +15,26 @@ image:
   imagePullPolicy: IfNotPresent
   terminationMessagePolicy: File
 
-  ports:
-    - containerPort: 3111
-  
-  resources:
-    requests:
-      cpu: 250m
-      memory: 64Mi
-    limits: 
-      memory: 128Mi
-      CPU: 500m
+ports:
+  - containerPort: 3111
 
-  livenessProbe:
-    httpGet:
-      host: ''
-      path: /healthz
-      port: 3111
-      scheme: ''
-  readinessProbe:
-    httpGet:
-      host: ''
-      path: /healthz
-      port: 3111
-      scheme: ''
+resources:
+  requests:
+    cpu: 250m
+    memory: 64Mi
+  limits: 
+    memory: 128Mi
+    CPU: 500m
+
+livenessProbe:
+  httpGet:
+    host: ''
+    path: /healthz
+    port: 3111
+    scheme: ''
+readinessProbe:
+  httpGet:
+    host: ''
+    path: /healthz
+    port: 3111
+    scheme: ''
