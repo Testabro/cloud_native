@@ -43,6 +43,6 @@ spec:
           readinessProbe:
               httpGet:
                 host: ''
-                path: {{ .Values.readinessProbe.path }}
-                port: {{ .Values.readinessProbe.port }}
+                path: {{ .Values.httpGet.readinessProbe.path }}
+                port: {{ .Values.httpGet.readinessProbe.port }}
                 scheme: ''
