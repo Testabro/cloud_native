@@ -6,13 +6,13 @@ service:
 
 replicaCount: 5
 
-containers:
-  image:
-    pullPolicy: Always
-  resources:
-    requests: 
-      memory: 128Mi
-      CPU: 350m
-    limits: 
-      memory: 256Mi
-      CPU: 500m
+image:
+  pullPolicy: Always
+
+resources:
+  requests: 
+    memory: 128Mi
+    CPU: 350m
+  limits: 
+    memory: 256Mi
+    CPU: 500m

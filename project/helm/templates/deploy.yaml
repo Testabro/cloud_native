@@ -5,43 +5,40 @@ metadata:
   namespace: {{ .Values.namespace.name }}
   labels:
     app: techtrends
-
-selector:
-  matchLabels:
-    app: techtrends
-
-replicas: {{ .Values.replicaCount }}
-
-strategy:
-  type: RollingUpdate
-  rollingUpdate:
-    maxSurge: 25%
-    maxUnavailable: 25%
-
-template:
-  metadata:
-    labels:
+spec:
+  selector:
+    matchLabels:
       app: techtrends
-      
-containers:
-  - name: techtrends
-    image: {{ .Values.containers.image.repository }}:{{ .Values.containers.image.tag }}
-    imagePullPolicy: IfNotPresent
-    terminationMessagePolicy: File
-    ports:
-      - containerPort: {{ .Values.ports.containerPort }}
-    resources:
-      requests:
-        memory: {{ .Values.containers.resources.requests.memory }}
-        cpu: {{ .Values.containers.resources.requests.cpu }}
-      limits:
-        memory: {{ .Values.containers.resources.limits.memory }}
-        cpu: {{ .Values.containers.resources.limits.cpu }}
-    livenessProbe:
-      httpGet:
-        path: {{ .Values.livenessProbe.httpGet.path }}
-        port: {{ .Values.livenessProbe.httpGet.port }}
-    readinessProbe:
-        httpGet:
-          path: {{ .Values.readinessProbe.httpGet.path }}
-          port: {{ .Values.readinessProbe.httpGet.port }}
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: techtrends
+    spec:
+      containers:
+        - name: techtrends
+          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: IfNotPresent
+          terminationMessagePolicy: File
+          ports:
+            - containerPort: {{ .Values.resources.requests.memory }}
+          resources:
+            requests:
+              memory: {{ .Values.resources.requests.memory }}
+              cpu: {{ .Values.resources.requests.cpu }}
+            limits:
+              memory: {{ .Values.resources.limits.memory }}
+              cpu: {{ .Values.resources.limits.cpu }}
+          livenessProbe:
+            httpGet:
+              path: {{ .Values.livenessProbe.httpGet.path }}
+              port: {{ .Values.livenessProbe.httpGet.port }}
+          readinessProbe:
+              httpGet:
+                path: {{ .Values.readinessProbe.httpGet.path }}
+                port: {{ .Values.readinessProbe.httpGet.port }}
