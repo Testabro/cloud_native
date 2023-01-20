@@ -9,28 +9,29 @@ service:
 
 replicaCount: 1
 
-image:
-  repository: testabro/techtrends
-  tag: latest
-  imagePullPolicy: IfNotPresent
-  terminationMessagePolicy: File
+containers:
+  image:
+    repository: testabro/techtrends
+    tag: latest
+    imagePullPolicy: IfNotPresent
+    terminationMessagePolicy: File
 
-ports:
-  - containerPort: 3111
+  ports:
+    - containerPort: 3111
 
-resources:
-  requests:
-    cpu: 250m
-    memory: 64Mi
-  limits: 
-    memory: 128Mi
-    CPU: 500m
+  resources:
+    requests:
+      cpu: 250m
+      memory: 64Mi
+    limits: 
+      memory: 128Mi
+      CPU: 500m
 
-livenessProbe:
-  httpGet:
-    path: /healthz
-    port: 3111
-readinessProbe:
-  httpGet:
-    path: /healthz
-    port: 3111
+  livenessProbe:
+    httpGet:
+      path: /healthz
+      port: 3111
+  readinessProbe:
+    httpGet:
+      path: /healthz
+      port: 3111

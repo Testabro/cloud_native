@@ -9,7 +9,7 @@ metadata:
 selector:
   matchLabels:
     app: techtrends
-    
+
 replicas: {{ .Values.replicaCount }}
 
 strategy:
@@ -29,14 +29,14 @@ containers:
     imagePullPolicy: IfNotPresent
     terminationMessagePolicy: File
     ports:
-      - containerPort: {{ .Values.ports.containerPort }}
+      - containerPort: {{ .Values.containers.ports.containerPort }}
     resources:
       requests:
-        memory: {{ .Values.resources.requests.memory }}
-        cpu: {{ .Values.resources.requests.cpu }}
+        memory: {{ .Values.containers.resources.requests.memory }}
+        cpu: {{ .Values.containers.resources.requests.cpu }}
       limits:
-        memory: {{ .Values.resources.limits.memory }}
-        cpu: {{ .Values.resources.limits.cpu }}
+        memory: {{ .Values.containers.resources.limits.memory }}
+        cpu: {{ .Values.containers.resources.limits.cpu }}
     livenessProbe:
       httpGet:
         path: {{ .Values.livenessProbe.httpGet.path }}
