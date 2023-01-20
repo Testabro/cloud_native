@@ -37,12 +37,12 @@ spec:
           livenessProbe:
             httpGet:
               host: ''
-              path: {{ .Values.containers.livenessProbe.path }}
-              port: {{ .Values.containers.livenessProbe.port }}
+              path: {{ .Values.livenessProbe.path }}
+              port: {{ .Values.livenessProbe.port }}
               scheme: ''
           readinessProbe:
               httpGet:
                 host: ''
-                path: {{ .Values.containers.readinessProbe.path }}
-                port: {{ .Values.containers.readinessProbe.port }}
+                path: {{ .Values.readinessProbe.path }}
+                port: {{ .Values.readinessProbe.port }}
                 scheme: ''
