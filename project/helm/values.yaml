@@ -7,21 +7,35 @@ service:
   protocol: TCP
   type: ClusterIP
 
-image:
-  repository: testabro/techtrends
-  tag: latest
-  pullPolicy: IfNotPresent
-
 replicaCount: 1
 
-resources:
-  requests:
-    cpu: 250m
-    memory: 64Mi
-  limits: 
-    memory: 128Mi
-    CPU: 500m
+containers:
+  - name: techtrends
+    image:
+      repository: testabro/techtrends
+      tag: latest
+      imagePullPolicy: IfNotPresent
+      terminationMessagePolicy: File
+    ports:
+      - containerPort: 3111
+    
+    resources:
+      requests:
+        cpu: 250m
+        memory: 64Mi
+      limits: 
+        memory: 128Mi
+        CPU: 500m
 
-containerPort: 3111
-livenessProbe path: /healthz
-readinessProbe path: /healthz
+    livenessProbe:
+      httpGet:
+        host: ''
+        path: /healthz
+        port: 3111
+        scheme: ''
+    readinessProbe:
+      httpGet:
+        host: ''
+        path: /healthz
+        port: 3111
+        scheme: ''

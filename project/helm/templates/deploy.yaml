@@ -37,12 +37,12 @@ spec:
           livenessProbe:
             httpGet:
               host: ''
-              path: /healthz
-              port: 3111
+              path: {{ .Values.containers.livenessProbe.path }}
+              port: {{ .Values.containers.livenessProbe.port }}
               scheme: ''
           readinessProbe:
-            httpGet:
-              host: ''
-              path: /healthz
-              port: 3111
-              scheme: ''
+              httpGet:
+                host: ''
+                path: {{ .Values.containers.readinessProbe.path }}
+                port: {{ .Values.containers.readinessProbe.port }}
+                scheme: ''
