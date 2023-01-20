@@ -36,13 +36,9 @@ spec:
               cpu: 500m
           livenessProbe:
             httpGet:
-              host: ''
               path: {{ .Values.livenessProbe.httpGet.path }}
               port: {{ .Values.livenessProbe.httpGet.port }}
-              scheme: ''
           readinessProbe:
               httpGet:
-                host: ''
                 path: {{ .Values.readinessProbe.httpGet.path }}
                 port: {{ .Values.readinessProbe.httpGet.port }}
-                scheme: ''
