@@ -16,7 +16,7 @@ image:
   terminationMessagePolicy: File
 
 ports:
-  - containerPort: 3111
+  containerPort: 3111
 
 resources:
   requests:
