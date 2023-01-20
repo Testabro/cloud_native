@@ -24,7 +24,7 @@ resources:
     memory: 64Mi
   limits: 
     memory: 128Mi
-    CPU: 500m
+    cpu: 500m
 
 livenessProbe:
   httpGet:
