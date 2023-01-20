@@ -29,7 +29,7 @@ containers:
     imagePullPolicy: IfNotPresent
     terminationMessagePolicy: File
     ports:
-      - containerPort: {{ .Values.containers.ports.containerPort }}
+      - containerPort: {{ .Values.ports.containerPort }}
     resources:
       requests:
         memory: {{ .Values.containers.resources.requests.memory }}

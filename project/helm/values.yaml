@@ -9,16 +9,16 @@ service:
 
 replicaCount: 1
 
+ports:
+  - containerPort: 3111
+
 containers:
   image:
     repository: testabro/techtrends
     tag: latest
     imagePullPolicy: IfNotPresent
     terminationMessagePolicy: File
-
-  ports:
-    - containerPort: 3111
-
+  
   resources:
     requests:
       cpu: 250m
