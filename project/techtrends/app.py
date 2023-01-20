@@ -1,4 +1,4 @@
-import os, sqlite3, logging
+import os, sys, sqlite3, logging
 
 from flask import (
     Flask,
@@ -146,8 +146,18 @@ def metrics():
 
 # start the application on port 3111
 if __name__ == "__main__":
-    # Logging configuration
-    app.logger.setLevel(logging.INFO)
+    # set logger to handle STDOUT and STDERR 
+    stdout_handler =  logging.StreamHandler(sys.stdout)
+    stdout_handler.setLevel(logging.DEBUG)
+
+    stderr_handler =  logging.StreamHandler(sys.stderr)
+    stderr_handler.setLevel(logging.ERROR)
+
+    handlers = [stderr_handler, stdout_handler]
+    # format output
+    format_output = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+
+    logging.basicConfig(format=format_output, level=logging.DEBUG, handlers=handlers)
     
     # Start the app
     app.run(host="0.0.0.0", port="3111")
