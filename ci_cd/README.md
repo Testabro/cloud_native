@@ -1,0 +1,1 @@
+### Example of CI/CD setup: Microservice Architecture focused
