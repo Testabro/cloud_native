@@ -1,3 +1,3 @@
 ### Cloud Native Fundamentals
 
-**Instructor**: https://github.com/kgamanji
+**CI/CD Instructor**: https://github.com/kgamanji
